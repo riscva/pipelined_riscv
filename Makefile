@@ -34,7 +34,7 @@ waveform.vcd: ./obj_dir/V$(MODULE)
 .PHONY:lint
 lint: $(MODULE).sv
 	clear
-	verilator --lint-only -Icomponents $(MODULE).sv
+	verilator --lint-only -Wall -Wpedantic -Icomponents $(MODULE).sv waiver.vlt
 
 .PHONY: clean
 clean:

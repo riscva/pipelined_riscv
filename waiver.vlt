@@ -1,0 +1,8 @@
+`verilator_config
+
+
+lint_off -rule WIDTH -file "*components/alu.sv" -match "Operator ADD expects 32 bits on the RHS, but RHS's SEL generates 1 bits."
+
+lint_off -rule WIDTH -file "*components/alu.sv" -match "Operator XOR expects 32 bits on the LHS, but LHS's SEL generates 1 bits."
+
+lint_off -rule WIDTH -file "*components/alu.sv" -match "Operator XOR expects 32 bits on the RHS, but RHS's VARREF 'v' generates 1 bits."

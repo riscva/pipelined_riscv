@@ -43,7 +43,7 @@ module riscv(       input  logic         clk, reset,
     logic           RegWriteM;
     logic           RegWriteW;
     logic [1:0]     ResultSrcW;
-    logic           ForwardAE, ForwardBE;
+    logic [1:0]     ForwardAE, ForwardBE;
     logic           FlushE, FlushD;
     logic           StallD, StallF;
     logic [4:0]     Rs1D, Rs2D, Rs1E, Rs2E;

@@ -27,4 +27,4 @@ module hazard (     input   logic [4:0] Rs1D, Rs2D, Rs1E, Rs2E, RdE, RdM, RdW,
                                         // always predicted as not taken
 
 
-endmodule
+endmodule 

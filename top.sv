@@ -14,4 +14,4 @@ module top(input  logic         clk, reset,
     imem imem(PCF, InstrF);
     dmem dmem(clk, MemWriteM, DataAdrM, WriteDataM, ReadDataM);
 
-endmodule
+endmodule 

@@ -34,7 +34,7 @@ module controller(  input   logic            clk, reset,
     logic       BranchD, BranchE;
     logic [1:0] ALUOpD;
     logic [2:0] ALUControlD;
-    logic [2:0] ALUSrcAD, ALUSrcBD;
+    logic       ALUSrcAD, ALUSrcBD;
 
 
     maindec md(opD, ResultSrcD, MemWriteD, BranchD,

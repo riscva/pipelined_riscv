@@ -4,7 +4,7 @@ module datapath(    input   logic           clk, reset,
 
                     // Fetch stage
                     output  logic [31:0]    PCF,        // to IM's address
-                    input   logic           InstrF,     // from IM's read data
+                    input   logic [31:0]    InstrF,     // from IM's read data
 
                     // Decode stage
                     output  logic [6:0]     opD,
@@ -15,7 +15,7 @@ module datapath(    input   logic           clk, reset,
                     // Execute stage
                     input   logic [2:0]     ALUControlE,
                     input   logic           ALUSrcAE, ALUSrcBE,
-                    input   logic           ForwardAE, ForwardBE,
+                    input   logic [1:0]     ForwardAE, ForwardBE,
                     input   logic           PCSrcE,                 // from control unit
                     output  logic           ZeroE,
 
@@ -42,11 +42,11 @@ module datapath(    input   logic           clk, reset,
     // Decode stage signals
     logic [31:0]    InstrD;
     logic [31:0]    PCD, PCPlus4D;
-    logic [4:0]     RD1D, RD2D;
+    logic [31:0]    RD1D, RD2D;
     logic [4:0]     RdD;
     logic [31:0]    ImmExtD;
     // Execute stage signals
-    logic [4:0]     RD1E, RD2E;
+    logic [31:0]    RD1E, RD2E;
     logic [31:0]    PCE, ImmExtE, PCTargetE;
     logic [31:0]    PCPlus4E;
     logic [31:0]    SrcAE, SrcBE;
@@ -78,11 +78,11 @@ module datapath(    input   logic           clk, reset,
     assign Rs2D         = InstrD[24:20];
     assign RdD          = InstrD[11:7];
 
-    regfile             rf(clk, RegWriteW, Rs1D, Rs2D, RdW, ResultW, RD1D, RD2D);
+    regfile             regs(clk, RegWriteW, Rs1D, Rs2D, RdW, ResultW, RD1D, RD2D);
     extend              ext(InstrD[31:7], ImmSrcD, ImmExtD);
 
     // Execute stage pipeline register and logic
-    floprc  #(121)      regE(clk, reset, FlushE,
+    floprc  #(175)      regE(clk, reset, FlushE,
                         {RD1D, RD2D, PCD, Rs1D, Rs2D, RdD, ImmExtD, PCPlus4D},
                         {RD1E, RD2E, PCE, Rs1E, Rs2E, RdE, ImmExtE, PCPlus4E});
 

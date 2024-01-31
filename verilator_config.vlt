@@ -1,3 +1,0 @@
-`verilator_config
-
-lint_off -rule WIDTH -file "components/alu.v" -line 15

@@ -8,7 +8,7 @@ module alu #(parameter N = 8)
              );
 
     logic [N-1:0] condinvb, sum;
-    logic         z, v;
+    logic         v;
     logic         isAddSub;
 
     assign condinvb = ALUControl[0] ? ~b : b;
