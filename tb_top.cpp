@@ -34,10 +34,10 @@ int main(int argc, char** argv, char** env) {
         dut->clk ^= 1;
         dut->eval();
 
-        if (dut->MemWrite == 1 & dut->clk == 0) {
-            if (dut->DataAdr == 100 & dut->WriteData == 25)
+        if (dut->MemWriteM == 1 & dut->clk == 0) {
+            if (dut->DataAdrM == 100 & dut->WriteDataM == 25)
                 std::cout << "Simulation succeeded" << std::endl;
-            else if (dut->DataAdr =! 96)
+            else if (dut->DataAdrM =! 96)
                 std::cout << "Simulation failed" << std::endl;
             else
                 std::cout << "Error!" << std::endl;

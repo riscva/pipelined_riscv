@@ -2,11 +2,11 @@ module testbench();
 
     logic           clk;
     logic           reset;
-    logic [31:0]    WriteData, DataAdr;
-    logic           MemWrite;
+    logic [31:0]    WriteDataM, DataAdrM;
+    logic           MemWriteM;
 
     // instantiate device to be tested
-    top dut(clk, reset, WriteData, DataAdr, MemWrite);
+    top dut (clk, reset,WriteDataM, DataAdrM, MemWriteM);
 
     // initialize testbench
     initial
@@ -23,11 +23,11 @@ module testbench();
     // check results
     always @(negedge clk)
         begin
-            if (MemWrite) begin
-                if (DataAdr === 100 & WriteData === 25) begin
+            if (MemWriteM) begin
+                if (DataAdrM === 100 & WriteDataM === 25) begin
                     $display("Simulation succeeded");
                     $stop;
-                end else if (DataAdr !== 96) begin
+                end else if (DataAdrM !== 96) begin
                     $display("Simulation failed");
                     $stop;
                 end
