@@ -5,28 +5,16 @@ module riscv(       input  logic         clk, reset,
                     input  logic [31:0]  InstrF,
                     output logic         MemWriteM,
                     output logic [31:0]  ALUResultM, WriteDataM,
+                    output logic [2:0]   MemControlM,
                     input  logic [31:0]  ReadDataM);
 
 
-    controller c(clk, reset,
-                 opD, funct3D, funct7b5D, ImmSrcD,
-                 FlushE, ZeroE, PCSrcE, ALUControlE, ALUSrcAE, ALUSrcBE, ResultSrcEb0,
-                 MemWriteM, RegWriteM, 
-                 RegWriteW, ResultSrcW);
+    controller c( .* );
 
-    datapath dp(clk, reset, PCF, InstrF,
-                opD, funct3D, funct7b5D, ImmSrcD,
-                ALUControlE, ALUSrcAE, ALUSrcBE, ForwardAE, ForwardBE, PCSrcE, ZeroE,
-                ALUResultM, WriteDataM,ReadDataM,
-                RegWriteW,ResultSrcW,
-                FlushE, FlushD, StallD, StallF, Rs1D, Rs2D, Rs1E, Rs2E, RdE, RdM, RdW);
+    datapath dp( .* );
 
-    hazard hu(  Rs1D, Rs2D, Rs1E, Rs2E, RdE, RdM, RdW,
-                PCSrcE, ResultSrcEb0, RegWriteM, RegWriteW,
-                ForwardAE, ForwardBE,
-                StallF, StallD, FlushD, FlushE);
+    hazard hu( .* );
 
-    
 
     // Connecting wires //
 
